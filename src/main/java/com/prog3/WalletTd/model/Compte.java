@@ -4,11 +4,11 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 public class Compte {
-    int id ;
-    String nom;
-    BigDecimal solde_montant;
-    Timestamp solde_date_maj;
-    Devise nomdevise;
+    private int id ;
+    private String nom;
+    private BigDecimal solde_montant;
+    private Timestamp solde_date_maj;
+    private Devise nomdevise;
 
     public int getId() {
         return id;
