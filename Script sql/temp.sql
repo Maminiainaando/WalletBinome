@@ -8,7 +8,7 @@ CREATE DATABASE gestion_portefeuille;
 \c gestion_portefeuille
 
 -- Table pour les types de devise (par exemple : Euro, Ariary)
-CREATE TABLE IF NOT EXISTS devise (
+CREATE TABLE IF NOT EXISTS currency (
     id SERIAL PRIMARY KEY,
     nom VARCHAR(50) UNIQUE,
     code VARCHAR(3) UNIQUE
@@ -21,7 +21,7 @@ INSERT INTO devise (nom, code) VALUES
 ON CONFLICT (nom) DO NOTHING;
 
 -- Table pour les comptes
-CREATE TABLE IF NOT EXISTS compte (
+CREATE TABLE IF NOT EXISTS account (
     id SERIAL PRIMARY KEY,
     nom VARCHAR(50),
     solde_montant DECIMAL(15, 2),
