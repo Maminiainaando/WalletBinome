@@ -14,7 +14,7 @@ public class CurrencyModel {
     }
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {
@@ -22,7 +22,7 @@ public class CurrencyModel {
     }
 
     public String getNom() {
-        return nom;
+        return this.nom;
     }
 
     public void setNom(String nom) {
@@ -30,7 +30,7 @@ public class CurrencyModel {
     }
 
     public String getCode() {
-        return code;
+        return this.code;
     }
 
     public void setCode(String code) {

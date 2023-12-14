@@ -1,5 +1,9 @@
 package com.prog3.WalletTd.model;
 
+import com.prog3.WalletTd.DatabaseConfiguration;
+import com.prog3.WalletTd.repository.AccountDAO;
+import com.prog3.WalletTd.repository.AccountInterface;
+
 import java.math.BigDecimal;
 import java.sql.Time;
 import java.sql.Timestamp;
@@ -9,42 +13,38 @@ public class Transaction {
  /* id SERIAL PRIMARY KEY,
     label VARCHAR(50),
     montant DECIMAL(15, 2),
-    date_transaction TIMESTAMP,
-    type_transaction VARCHAR(10) CHECK (type_transaction IN ('Débit', 'Crédit')),
-    compte_id INT REFERENCES account(id)*/
+    date TIMESTAMP,
+    type VARCHAR(10) CHECK (type IN ('Débit', 'Crédit')),
+    account_id INT REFERENCES account(id)*/
 
     private int id;
     private String label;
     private BigDecimal montant;
-    private  String type_transaction;
+    private  String type;
 
-    private Timestamp Date_transaction;
+    private Timestamp date;
 
-    public Transaction(int id, String label, BigDecimal montant, String type_transaction, Timestamp date_transaction) {
+    private Integer account_id;
+
+    public Transaction(int id, String label, BigDecimal montant, String type, Timestamp date, Integer account_id) {
         this.id = id;
         this.label = label;
         this.montant = montant;
-        this.type_transaction = type_transaction;
-        Date_transaction = date_transaction;
+        this.type = type;
+        this.date = date;
+        this.account_id = account_id;
     }
 
-    public Timestamp getDate_transaction() {
-        return Date_transaction;
+    public Timestamp getDate() {
+        return this.date;
     }
 
-    public void setDate_transaction(Timestamp date_transaction) {
-        Date_transaction = date_transaction;
-    }
-
-    public Transaction(int id, String label, BigDecimal montant, String type_transaction) {
-        this.id = id;
-        this.label = label;
-        this.montant = montant;
-        this.type_transaction = type_transaction;
+    public void setDate(Timestamp date_transaction) {
+        this.date = date_transaction;
     }
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {
@@ -52,7 +52,7 @@ public class Transaction {
     }
 
     public String getLabel() {
-        return label;
+        return this.label;
     }
 
     public void setLabel(String label) {
@@ -60,18 +60,23 @@ public class Transaction {
     }
 
     public BigDecimal getMontant() {
-        return montant;
+        return this.montant;
     }
 
     public void setMontant(BigDecimal montant) {
         this.montant = montant;
     }
 
-    public String getType_transaction() {
-        return type_transaction;
+    public String getType() {
+        return this.type;
     }
 
-    public void setType_transaction(String type_transaction) {
-        this.type_transaction = type_transaction;
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Account getAccount() {
+        AccountDAO accountDAO = new AccountDAO(DatabaseConfiguration.getConnection());
+        return accountDAO.find(this.account_id);
     }
 }

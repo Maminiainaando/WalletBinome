@@ -24,9 +24,8 @@ ON CONFLICT (nom) DO NOTHING;
 CREATE TABLE IF NOT EXISTS account (
     id SERIAL PRIMARY KEY,
     nom VARCHAR(50),
-    solde_montant DECIMAL(15, 2),
-    solde_date_maj TIMESTAMP,
-    devise varchar(50) REFERENCES currency(nom),
+    solde DECIMAL(15, 2),
+    currency_id INT REFERENCES currency(id),
     type VARCHAR(20) CHECK (type IN ('Banque', 'Espèce', 'Mobile Money'))
 );
 
@@ -35,7 +34,7 @@ CREATE TABLE IF NOT EXISTS transaction (
     id SERIAL PRIMARY KEY,
     label VARCHAR(50),
     montant DECIMAL(15, 2),
-    date_transaction TIMESTAMP,
-    type_transaction VARCHAR(10) CHECK (type_transaction IN ('Débit', 'Crédit')),
-    compte_id INT REFERENCES account(id)
+    date TIMESTAMP,
+    type VARCHAR(10) CHECK (type IN ('Débit', 'Crédit')),
+    account_id INT REFERENCES account(id)
 );
