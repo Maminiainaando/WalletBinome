@@ -1,7 +1,6 @@
 package com.prog3.WalletTd.repository;
 
 import com.prog3.WalletTd.model.Compte;
-import com.prog3.WalletTd.model.Devise;
 
 import java.sql.*;
 import java.util.List;

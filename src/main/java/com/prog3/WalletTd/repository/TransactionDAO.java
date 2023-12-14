@@ -11,13 +11,13 @@ public class TransactionDAO implements TransactionInterface{
     @Override
     public Transaction insert(Transaction transaction) {
         String resultat;
-        String sql="INSERT INTO transaction(id,label,montant,date_transaction,type_transaction) VALUES (?,?,?,?,?)";
+        String sql="INSERT INTO transaction(id,label,montant,type_transaction ,date_transaction) VALUES (?,?,?,?,?)";
         try (PreparedStatement statement=connection.prepareStatement(sql)){
             statement.setInt(1,transaction.getId());
             statement.setString(2,transaction.getLabel());
             statement.setBigDecimal(3,transaction.getMontant());
-            statement.setTimestamp(4,transaction.getDate_transaction());
-            statement.setString(5,transaction.getType_transaction());
+            statement.setTimestamp(5,transaction.getDate_transaction());
+            statement.setString(4,transaction.getType_transaction());
             statement.executeQuery();
             System.out.println("Insertion reussit");
         }catch (SQLException e){

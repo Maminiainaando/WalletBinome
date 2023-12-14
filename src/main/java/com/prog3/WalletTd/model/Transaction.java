@@ -1,9 +1,9 @@
 package com.prog3.WalletTd.model;
 
-import java.io.Serial;
 import java.math.BigDecimal;
+import java.sql.Time;
 import java.sql.Timestamp;
-import java.text.DecimalFormat;
+import java.time.LocalDateTime;
 
 public class Transaction {
  /* id SERIAL PRIMARY KEY,
@@ -13,23 +13,41 @@ public class Transaction {
     type_transaction VARCHAR(10) CHECK (type_transaction IN ('Débit', 'Crédit')),
     compte_id INT REFERENCES account(id)*/
 
-    private Serial id;
+    private int id;
     private String label;
     private BigDecimal montant;
     private  String type_transaction;
 
-    public Transaction(Serial id, String label, BigDecimal montant, String type_transaction) {
+    private Timestamp Date_transaction;
+
+    public Transaction(int id, String label, BigDecimal montant, String type_transaction, Timestamp date_transaction) {
+        this.id = id;
+        this.label = label;
+        this.montant = montant;
+        this.type_transaction = type_transaction;
+        Date_transaction = date_transaction;
+    }
+
+    public Timestamp getDate_transaction() {
+        return Date_transaction;
+    }
+
+    public void setDate_transaction(Timestamp date_transaction) {
+        Date_transaction = date_transaction;
+    }
+
+    public Transaction(int id, String label, BigDecimal montant, String type_transaction) {
         this.id = id;
         this.label = label;
         this.montant = montant;
         this.type_transaction = type_transaction;
     }
 
-    public Serial getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Serial id) {
+    public void setId(int id) {
         this.id = id;
     }
 

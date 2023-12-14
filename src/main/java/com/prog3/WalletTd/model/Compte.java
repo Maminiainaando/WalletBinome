@@ -3,16 +3,15 @@ package com.prog3.WalletTd.model;
 import java.io.Serial;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
-import java.text.DecimalFormat;
 
 public class Compte {
-    private Serial id ;
+    private int id ;
     private String nom;
     private BigDecimal solde_montant;
     private Timestamp solde_date_maj;
     private String type;
 
-    public Compte(Serial id, String nom, BigDecimal solde_montant, Timestamp solde_date_maj, String type) {
+    public Compte(int id, String nom, BigDecimal solde_montant, Timestamp solde_date_maj, String type) {
         this.id = id;
         this.nom = nom;
         this.solde_montant = solde_montant;
@@ -20,11 +19,11 @@ public class Compte {
         this.type = type;
     }
 
-    public Serial getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Serial id) {
+    public void setId(int id) {
         this.id = id;
     }
 
