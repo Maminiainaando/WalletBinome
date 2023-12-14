@@ -10,7 +10,7 @@ public class DatabaseConfiguration {
     private DatabaseConfiguration() {
         try {
             connection = DriverManager.getConnection(
-                    "jdbc:postgresql://localhost/library_management",
+                    "jdbc:postgresql://localhost/gestion_portefeuille",
                     System.getenv("DBUSER"),
                     System.getenv("PASSWORD")
             );
@@ -28,6 +28,6 @@ public class DatabaseConfiguration {
     }
 
     public static void main(String[] args) {
-        new DatabaseConfiguration();
+      Connection connection1=DatabaseConfiguration.getConnection();
     }
 }

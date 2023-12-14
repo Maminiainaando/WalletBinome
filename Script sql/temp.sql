@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS currency (
 );
 
 -- Insertion des devises Euro et Ariary
-INSERT INTO devise (nom, code) VALUES
+ INSERT INTO currency (nom, code) VALUES
     ('Euro', 'EUR'),
     ('Ariary', 'MGA')
 ON CONFLICT (nom) DO NOTHING;
@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS account (
     nom VARCHAR(50),
     solde_montant DECIMAL(15, 2),
     solde_date_maj TIMESTAMP,
-    devise INT REFERENCES devise(nom),
+    devise varchar(50) REFERENCES currency(nom),
     type VARCHAR(20) CHECK (type IN ('Banque', 'Espèce', 'Mobile Money'))
 );
 
@@ -37,5 +37,5 @@ CREATE TABLE IF NOT EXISTS transaction (
     montant DECIMAL(15, 2),
     date_transaction TIMESTAMP,
     type_transaction VARCHAR(10) CHECK (type_transaction IN ('Débit', 'Crédit')),
-    compte_id INT REFERENCES compte(id)
+    compte_id INT REFERENCES account(id)
 );

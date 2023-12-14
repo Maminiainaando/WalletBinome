@@ -12,13 +12,18 @@ public class CompteDAO implements CompteInterface{
     @Override
     public Compte insert(Compte compte) {
         String resultat;
-        String sql="INSERT INTO compte(id,nom,solde_montant,solde_date_maj,nomdevise) VALUES (?,?,?,?,?)";
+        /** private int id ;
+         private String nom;
+         private BigDecimal solde_montant;
+         private Timestamp solde_date_maj;
+         private String type;*/
+        String sql="INSERT INTO account(id,nom,solde_montant,solde_date_maj,type) VALUES (?,?,?,?,?)";
         try (PreparedStatement statement=connection.prepareStatement(sql)){
             statement.setInt(1,compte.getId());
             statement.setString(2,compte.getNom());
             statement.setBigDecimal(3,compte.getSolde_montant());
             statement.setTimestamp(4,compte.getSolde_date_maj());
-            statement.setObject(5,compte.getNomdevise());
+            statement.setString(5,compte.getType());
             statement.executeQuery();
             System.out.println("Insertion reussit");
         }catch (SQLException e){
@@ -32,7 +37,7 @@ public class CompteDAO implements CompteInterface{
         Statement statement;
         ResultSet result=null;
         try{
-            String query=String.format("select * from compte");
+            String query=String.format("select * from account");
             statement=connection.createStatement();
             result=statement.executeQuery(query);
             while(result.next()){
@@ -40,7 +45,7 @@ public class CompteDAO implements CompteInterface{
                 System.out.print(result.getString("nom"));
                 System.out.print(result.getBigDecimal("solde_montant"));
                 System.out.print(result.getTimestamp("solde_date_maj"));
-                System.out.print(result.getString("nomdevise"));
+                System.out.print(result.getString("type"));
             }
         }catch (SQLException e){
             System.out.println(e.getMessage());
@@ -52,7 +57,7 @@ public class CompteDAO implements CompteInterface{
     public Compte modifiNomCompte(String nouveaucompte, String nomcompte) {
         Statement statement;
         try{
-            String sql=String.format("update compte set nom='%s' where phonenumber='%s'",nouveaucompte,nomcompte);
+            String sql=String.format("update compte set nom='%s' where nom='%s'",nouveaucompte,nomcompte);
             statement=connection.createStatement();
             statement.executeUpdate(sql);
         }catch (SQLException e){
@@ -62,10 +67,10 @@ public class CompteDAO implements CompteInterface{
     }
 
     @Override
-    public Compte modifiNomDeviseCompte(Devise nouveaudevise, Devise devise) {
+    public Compte modifiNomDeviseCompte(String nouveaudevise, String devise) {
         Statement statement;
         try{
-            String sql=String.format("update compte set devise='%s' where phonenumber='%s'",nouveaudevise,devise);
+            String sql=String.format("update compte set type='%s' where type='%s'",nouveaudevise,devise);
             statement=connection.createStatement();
             statement.executeUpdate(sql);
         }catch (SQLException e){

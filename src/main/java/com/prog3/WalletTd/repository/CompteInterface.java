@@ -10,6 +10,6 @@ public interface CompteInterface {
         Compte insert(Compte compte);
         List<Compte> findAll();
         Compte modifiNomCompte(String nouveaucompte,String nomcompte);
-        Compte modifiNomDeviseCompte(Devise newdevise, Devise devise);
+        Compte modifiNomDeviseCompte(String newdevise, String devise);
     }
 
