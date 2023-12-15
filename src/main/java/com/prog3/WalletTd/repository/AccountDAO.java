@@ -12,10 +12,6 @@ public class AccountDAO implements AccountInterface {
     @Override
     public Account insert(Account account) {
         String resultat;
-        /** private int id ;
-         private String nom;
-         private BigDecimal solde;
-         private String type;*/
         String sql="INSERT INTO account(id,nom,solde,type) VALUES (?,?,?,?)";
         try (PreparedStatement statement=connection.prepareStatement(sql)){
             statement.setInt(1, account.getId());
@@ -98,10 +94,7 @@ public class AccountDAO implements AccountInterface {
     public BigDecimal getSoldeOnDate(Integer account_id, Timestamp timestamp) {
         String resultat;
         BigDecimal soldeOnDate = BigDecimal.valueOf(0);
-        /** private int id ;
-         private String nom;
-         private BigDecimal solde;
-         private String type;*/
+      
         String sql="SELECT * FROM TRANSACTION WHERE account_id=? and date<=? order by date";
         try (PreparedStatement statement=connection.prepareStatement(sql)){
             statement.setInt(1, account_id);

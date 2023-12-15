@@ -7,5 +7,4 @@ import java.util.List;
 
 public interface CurrencyInterface {
     CurrencyModel insert(CurrencyModel devise);
-    List<CurrencyModel> findAll();
-}
+ q }

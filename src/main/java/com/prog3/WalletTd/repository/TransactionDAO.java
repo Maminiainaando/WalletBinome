@@ -20,6 +20,7 @@ public class TransactionDAO implements TransactionInterface{
             statement.setBigDecimal(3,transaction.getMontant());
             statement.setTimestamp(5,transaction.getDate());
             statement.setString(4,transaction.getType());
+            statement.setObject(6,transaction.getCategorie());
             statement.executeQuery();
             System.out.println("Insertion reussit");
         }catch (SQLException e){
@@ -42,6 +43,7 @@ public class TransactionDAO implements TransactionInterface{
                 System.out.print(result.getBigDecimal("montant"));
                 System.out.print(result.getTimestamp("date"));
                 System.out.print(result.getString("type"));
+                System.out.println(result.getString("categorie"));
             }
         }catch (SQLException e){
             System.out.println(e.getMessage());

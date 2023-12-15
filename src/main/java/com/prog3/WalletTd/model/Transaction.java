@@ -10,13 +10,20 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 public class Transaction {
- /* id SERIAL PRIMARY KEY,
-    label VARCHAR(50),
-    montant DECIMAL(15, 2),
-    date TIMESTAMP,
-    type VARCHAR(10) CHECK (type IN ('Débit', 'Crédit')),
-    account_id INT REFERENCES account(id)*/
-
+    /**
+     * Nourriture et cuisine Boissons
+     * Achats
+     * Logement
+     * Transport
+     * Véhicule
+     * Vie et amp;
+     * Divertissement
+     * Communication, PC
+     * Dépenses financières
+     * Investissements
+     * Revenu
+     * Autres
+     * */
     private int id;
     private String label;
     private BigDecimal montant;
@@ -25,15 +32,34 @@ public class Transaction {
     private Timestamp date;
 
     private Integer account_id;
+    private Categorie categorie;
 
-    public Transaction(int id, String label, BigDecimal montant, String type, Timestamp date, Integer account_id) {
+    public Transaction(int id, String label, BigDecimal montant, String type, Timestamp date, Integer account_id, Categorie categorie) {
         this.id = id;
         this.label = label;
         this.montant = montant;
         this.type = type;
         this.date = date;
         this.account_id = account_id;
+        this.categorie = categorie;
     }
+
+    public Categorie getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(Categorie categorie) {
+        this.categorie = categorie;
+    }
+
+    public Integer getAccount_id() {
+        return account_id;
+    }
+
+    public void setAccount_id(Integer account_id) {
+        this.account_id = account_id;
+    }
+
 
     public Timestamp getDate() {
         return this.date;

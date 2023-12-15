@@ -38,3 +38,54 @@ CREATE TABLE IF NOT EXISTS transaction (
     type VARCHAR(10) CHECK (type IN ('Débit', 'Crédit')),
     account_id INT REFERENCES account(id)
 );
+CREATE TABLE IF NOT EXISTS categorie(
+     nomcategorie varchar(100) not null unique
+);
+
+  INSERT INTO categorie (nomcategorie)
+  VALUES ('Achats')
+  ON CONFLICT (nomcategorie) DO UPDATE
+  SET nomcategorie = EXCLUDED.nomcategorie;
+
+  INSERT INTO categorie (nomcategorie)
+  VALUES ('Nourriture')
+  ON CONFLICT (nomcategorie) DO UPDATE
+  SET nomcategorie = EXCLUDED.nomcategorie;
+  INSERT INTO categorie (nomcategorie)
+  VALUES ('Logement')
+  ON CONFLICT (nomcategorie) DO UPDATE
+  SET nomcategorie = EXCLUDED.nomcategorie;
+  INSERT INTO categorie (nomcategorie)
+  VALUES ('Transport')
+  ON CONFLICT (nomcategorie) DO UPDATE
+  SET nomcategorie = EXCLUDED.nomcategorie;
+  INSERT INTO categorie (nomcategorie)
+  VALUES ('Véhicule')
+  ON CONFLICT (nomcategorie) DO UPDATE
+  SET nomcategorie = EXCLUDED.nomcategorie;
+  INSERT INTO categorie (nomcategorie)
+  VALUES ('Vie et Divertissement')
+  ON CONFLICT (nomcategorie) DO UPDATE
+  SET nomcategorie = EXCLUDED.nomcategorie;
+  INSERT INTO categorie (nomcategorie)
+  VALUES ('Communication')
+  ON CONFLICT (nomcategorie) DO UPDATE
+  SET nomcategorie = EXCLUDED.nomcategorie;
+  INSERT INTO categorie (nomcategorie)
+  VALUES ('Dépenses financières')
+  ON CONFLICT (nomcategorie) DO UPDATE
+  SET nomcategorie = EXCLUDED.nomcategorie;
+  INSERT INTO categorie (nomcategorie)
+  VALUES ('Investissements')
+  ON CONFLICT (nomcategorie) DO UPDATE
+  SET nomcategorie = EXCLUDED.nomcategorie;
+  INSERT INTO categorie (nomcategorie)
+  VALUES ('Revenu')
+  ON CONFLICT (nomcategorie) DO UPDATE
+  SET nomcategorie = EXCLUDED.nomcategorie;
+  INSERT INTO categorie (nomcategorie)
+  VALUES ('Autre')
+  ON CONFLICT (nomcategorie) DO UPDATE
+  SET nomcategorie = EXCLUDED.nomcategorie;
+
+

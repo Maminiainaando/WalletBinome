@@ -7,7 +7,7 @@ package com.prog3.WalletTd;
 public class WalletTdApplication {
 
 	public static void main(String[] args) {
-//		SpringApplication.run(WalletTdApplication.class, args);
+
 	}
 
 }
