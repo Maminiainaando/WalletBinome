@@ -10,20 +10,6 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 public class Transaction {
-    /**
-     * Nourriture et cuisine Boissons
-     * Achats
-     * Logement
-     * Transport
-     * Véhicule
-     * Vie et amp;
-     * Divertissement
-     * Communication, PC
-     * Dépenses financières
-     * Investissements
-     * Revenu
-     * Autres
-     * */
     private int id;
     private String label;
     private BigDecimal montant;
